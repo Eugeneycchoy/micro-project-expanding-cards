@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+  /* Include border & padding in width & height */
+  box-sizing: border-box;
+}
+
+body {
+  /* Center elements in the cross axis */
+  align-items: center;
+  /* Activate flexbox */
+  display: flex;
+  font-family: 'Muli', sans-serif;
+  height: 100vh;
+  /* Center elements in the main axis */
+  justify-content: center;
+  /* Get rid of default margin settings */
+  margin: 0;
+  /* Overflowing elements will become invisible */
+  overflow: hidden;
+}
+
+.first-image {
+  background-image: url("images/first.jpg");
+}
+
+.second-image {
+  background-image: url("images/second.jpg");
+}
+
+.third-image {
+  background-image: url("images/third.jpg");
+}
+
+.fourth-image {
+  background-image: url("images/fourth.jpg");
+}
+
+.fifth-image {
+  background-image: url("images/fifth.jpg");
+}
+
+.container {
+  /* Set all immediate children to align horizontally */
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+}
+
+.panel {
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Fill up the containing parent */
+  background-size: cover;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  flex: 0.5;
+  height: 80vh;
+  margin: 10px;
+  /* Direct parent must be relative if child wants to be absolute */
+  position: relative;
+  /* target(s) duration effect */
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  bottom: 20px;
+  font-size: 24px;
+  left: 20px;
+  margin: 0;
+  /* non-active panels should not display the h3 caption */
+  opacity: 0;
+  position: absolute;
+}
+
+/* element has panel & active class */
+.panel.active {
+  /* Set active panel to be 10 times the width of the non-active classes */
+  flex: 5;
+}
+
+.panel.active h3 {
+  /* Make the caption to reappear */
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* What should be changed when viewed under 500px width */
+@media(max-width: 500px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    /* same as removing the code altogether */
+    display: none;
+  }
+}
